@@ -11,8 +11,9 @@ import {
   max,
   min_value as minVal,
   max_value as maxVal,
-  alpha_spaces as alphaSpaces,
   email,
+  alpha_spaces as alphaSpaces,
+  not_one_of as excluded,
 } from "@vee-validate/rules";
 
 export default {
@@ -29,5 +30,6 @@ export default {
     defineRule("min_value", minVal);
     defineRule("max_value", maxVal);
     defineRule("confirmed", confirmed);
+    defineRule("excluded", excluded);
   },
 };
