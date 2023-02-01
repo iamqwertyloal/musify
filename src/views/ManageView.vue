@@ -176,3 +176,9 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  name: "ManageView",
+};
+</script>
