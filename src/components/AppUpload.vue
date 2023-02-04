@@ -24,7 +24,7 @@
       <div class="mb-4" v-for="upload in uploads" :key="upload.name">
         <!-- File Name -->
         <div class="font-bold text-sm" :class="upload.text_class">
-          <i :class="upload.icon"></i>&nbsp &nbsp{{ upload.name }}
+          <i :class="upload.icon"></i>&nbsp; &nbsp;{{ upload.name }}
         </div>
         <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
           <!-- Inner Progress Bar -->
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { storage } from "../includes/firebase";
+import { storage, songsCollection, auth } from "../includes/firebase";
 
 export default {
   name: "AppUpload",
@@ -88,7 +88,19 @@ export default {
             this.uploads[uploadIndex].text_class = "text-red-400";
             console.log(error);
           },
-          () => {
+          async () => {
+            const song = {
+              uid: auth.currentUser.uid,
+              display_name: auth.currentUser.displayName,
+              original_name: task.snapshot.ref.name,
+              modified_name: task.snapshot.ref.name,
+              genre: "",
+              comment_count: 0,
+            };
+
+            song.url = await task.snapshot.ref.getDownloadURL();
+            await songsCollection.add(song);
+
             this.uploads[uploadIndex].variant = "bg-green-400";
             this.uploads[uploadIndex].icon = "fas fa-check";
             this.uploads[uploadIndex].text_class = "text-green-400";
