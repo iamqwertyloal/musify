@@ -19,10 +19,11 @@
             <composition-item
               v-for="(song, index) in songs"
               :key="song.docID"
+              :index="index"
               :song="song"
               :updateSong="updateSong"
-              :index="index"
               :removeSong="removeSong"
+              :updateUnsavedFlag="updateUnsavedFlag"
             ></composition-item>
           </div>
         </div>
@@ -41,6 +42,7 @@ export default {
   data() {
     return {
       songs: [],
+      unsavedFlag: false,
     };
   },
   components: {
@@ -70,6 +72,19 @@ export default {
 
       this.songs.push(song);
     },
+    updateUnsavedFlag(value) {
+      this.unsavedFlag = value;
+    },
+  },
+  beforeRouteLeave(to, from, next) {
+    if (!this.unsavedFlag) {
+      next();
+    } else {
+      const leave = confirm(
+        "You have unsaved changes. Are you sure you want to leave?"
+      );
+      next(leave);
+    }
   },
   // beforeRouteLeave(to, from, next) {
   //   this.$refs.upload.cancelUploads();
