@@ -132,6 +132,8 @@ export default {
       this.in_submission = false;
       this.alert_variant = "bg-green-500";
       this.alert_message = "Success! Song info updated.";
+      // this.showForm = !this.showForm;
+      // this.show_alert = !this.show_alert;
     },
     async deleteSong() {
       const storageRef = storage.ref();
