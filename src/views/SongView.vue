@@ -17,7 +17,10 @@
         >
           <i
             class="fas"
-            :class="{ 'fa-play': !playing, 'fa-pause': playing }"
+            :class="{
+              'fa-play': !playing || !(current_song.docID === song.docID),
+              'fa-pause': playing,
+            }"
           ></i>
         </button>
         <div class="z-50 text-left ml-8">
