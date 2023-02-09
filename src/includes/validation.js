@@ -38,22 +38,22 @@ export default {
     configure({
       generateMessage: (ctx) => {
         const messages = {
-          required: `The field ${ctx.field} is required!`,
-          min: `The field ${ctx.field} is too short!`,
-          max: `The field ${ctx.field} is too long!`,
-          min_value: `The field ${ctx.field} is too low!`,
-          max_value: `The field ${ctx.field} is too high!`,
-          email: `The field ${ctx.field} must be a valid email!`,
-          alpha_spaces: `The field ${ctx.field} may only contain alphabetical characters and spaces!`,
+          required: `The ${ctx.field} field is required!`,
+          min: `The ${ctx.field} field is too short!`,
+          max: `The ${ctx.field} field is too long!`,
+          min_value: `The ${ctx.field} field is too low!`,
+          max_value: `The ${ctx.field} field is too high!`,
+          email: `The ${ctx.field} field must be a valid email!`,
+          alpha_spaces: `The ${ctx.field} field may only contain alphabetical characters and spaces!`,
           passwords_mismatch: `The passwords don't match!`,
-          excluded: `You are not allowed to use this value for the field ${ctx.field}!`,
+          excluded: `You are not allowed to use this value for the ${ctx.field} field!`,
           country_excluded: `Due to restrictions, we do not accept users from this location!`,
           tos_acceptance: `You must accept the Terms of Service!`,
         };
 
         const message = messages[ctx.rule.name]
           ? messages[ctx.rule.name]
-          : `The field ${ctx.field} is invalid!`;
+          : `The ${ctx.field} field is invalid!`;
 
         return message;
       },
