@@ -10,7 +10,7 @@
         <!-- Play/Pause Button -->
         <button
           @click.prevent="
-            !(current_song === song) ? newSong(song) : toggleAudio()
+            !(current_song.docID === song.docID) ? newSong(song) : toggleAudio()
           "
           type="button"
           class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none"
@@ -27,6 +27,7 @@
           <!-- Song Info -->
           <div class="text-3xl font-bold">{{ song.modified_name }}</div>
           <div>{{ song.genre }}</div>
+          <div class="song-price">{{ $n(1, "currency", "ru") }}</div>
         </div>
       </div>
     </section>
@@ -37,7 +38,13 @@
       >
         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
           <!-- Comment Count -->
-          <span class="card-title">Comments ({{ song.comment_count }})</span>
+          <span class="card-title">
+            {{
+              $tc("song.comment_count", song.comment_count, {
+                count: song.comment_count,
+              })
+            }}
+          </span>
           <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
         </div>
         <div class="p-6">

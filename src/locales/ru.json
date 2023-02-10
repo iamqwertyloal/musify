@@ -1,0 +1,15 @@
+{
+  "home": {
+    "listen": "Слушайте хорошую музыку!"
+  },
+  "song": {
+    "comment_count": "No comments | 1 comment | {count} comments"
+  },
+  "register": {
+    "accept": "Я принимаю {0} Musify",
+    "tos": "условия использования"
+  },
+  "manage": {
+    "my_songs": "Мои песни"
+  }
+}
