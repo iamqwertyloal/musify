@@ -4,7 +4,7 @@ import ru from "../locales/ru.json";
 
 export default createI18n({
   locale: "en",
-  fallbackLocale: "ru",
+  fallbackLocale: "en",
   messages: {
     en,
     ru,
