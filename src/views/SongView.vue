@@ -9,6 +9,7 @@
       <div class="container mx-auto flex items-center">
         <!-- Play/Pause Button -->
         <button
+          id="play-btn"
           @click.prevent="
             !(current_song.docID === song.docID) ? newSong(song) : toggleAudio()
           "
